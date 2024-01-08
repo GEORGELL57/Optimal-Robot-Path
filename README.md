@@ -20,7 +20,7 @@ display a relevant non-solvable message.
 ## Usage
 Example input file:
 5 11
-00000001000
+00000001000\n
 11001000010
 00000000000
 00100000001
