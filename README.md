@@ -18,40 +18,41 @@ one I will describe below. Then, the program to predict and present the steps (x
 be followed to solve the given game. In the event that a maze has no solution, the program that must
 display a relevant non-solvable message.
 ## Usage
-Example input file:
-5 11
-00000001000\n
-11001000010
-00000000000
-00100000001
-00000101000
-0 0
-4 10
-The first line will show the dimensions of the maze with space (Rows Columns).
-From the second to the fifth line (or even more for a larger maze) will
-the maze appears, where 1 corresponds to a location with a bomb and 0 corresponds to an empty
-location.
-The penultimate line shows the initial position of the robot with a space (Line Column) and
-in the last line the position of the treasure (final position) is depicted in the same way.
-The starting, ending position and dimensions can vary in each maze.
-The output of your program will be similar to the example below where it corresponds to the input
-above.
+Example input file:  
+5 11  
+00000001000  
+11001000010  
+00000000000  
+00100000001  
+00000101000  
+0 0  
+4 10  
+
+The first line will show the dimensions of the maze with space (Rows Columns).  
+From the second to the fifth line (or even more for a larger maze) will  
+the maze appears, where 1 corresponds to a location with a bomb and 0 corresponds to an empty  
+location.  
+The penultimate line shows the initial position of the robot with a space (Line Column) and  
+in the last line the position of the treasure (final position) is depicted in the same way.  
+The starting, ending position and dimensions can vary in each maze.  
+The output of your program will be similar to the example below where it corresponds to the input  
+above.  
 Path: [(0, 0), (0, 1), (0, 2), (0, 3), (0, 4), (0, 5), (0,
 6), (1, 6), (1, 7), (1, 8), (2, 8), (2, 9), (3, 9), (4, 9), (4,
 10)]
 ## Support
-Tasks:
-• Make a grid of coordinates
-• Find optimal path using Euclidian distance
-• Find optimal path using Manhattan distance
-• Print the time it takes to find the route both
+Tasks:  
+• Make a grid of coordinates  
+• Find optimal path using Euclidian distance  
+• Find optimal path using Manhattan distance  
+• Print the time it takes to find the route both  
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would
 like to change.
 Please make sure to update tests as appropriate.
 ## License
 MIT License
-Copyright (c) 2024 George Ellinides
+Copyright (c) 2024 George Ellinides  
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
