@@ -129,6 +129,7 @@ public class AStarEuclidian {
 		boolean b=false;
 		//a temporary variable that saves the node the robot is currently at
 		Node temp = null;
+		long startTime = System.currentTimeMillis();
 
 		//while I have choices for nodes to go to and I am not at the ending node
 		while(!la.isEmpty() && !b) {
@@ -181,7 +182,10 @@ public class AStarEuclidian {
 					}
 				}
 			}
-		sc2.close();
+	    System.out.println("\nSteps: "+(ld.size()+la.size()));
+            long endTime   = System.currentTimeMillis();
+            float sec = (endTime - startTime) / 1000F; System.out.println(sec + " seconds");
+	    sc2.close();
 	}
 
 }
