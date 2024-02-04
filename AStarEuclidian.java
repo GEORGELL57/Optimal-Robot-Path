@@ -1,11 +1,13 @@
 import java.io.File;
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
 /*
  * The class AStarEuclidian finds the shortest path of the robot according to the euclidian distance
  * 
  * @since 14/01/2024
- * @author Giorgio Gregoriou
+ * @author GiuseppeGG
  *
  */
 public class AStarEuclidian {
@@ -45,7 +47,8 @@ public class AStarEuclidian {
 		}
 		/*
 		/finding the optimal path of robot starting from the ending node using its parent nodes
-		*/and printing the path from starting node to ending node
+		and printing the path from starting node to ending node
+		*/
 		public static void printList(Node n) {
 			
 			ArrayList<Node> p=new ArrayList<>();
