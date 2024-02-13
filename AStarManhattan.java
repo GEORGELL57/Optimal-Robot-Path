@@ -50,7 +50,7 @@ public class AStarManhattan {
 	/finding the optimal path of robot starting from the ending node using its parent nodes
 	/and printing the path from starting node to ending node
 	*/
-	public static void printList(Node n) {
+	public static void printList(Node n, char[][] arr2) {
 		//System.out.println(n.getC().getX()+" "+n.getC().getY());
 		ArrayList<Node> p=new ArrayList<>();
 		
@@ -63,18 +63,51 @@ public class AStarManhattan {
 		System.out.print("Path:   [ ");
 		for(Node m:p) {
 			System.out.print("("+m.getC().getX()+","+m.getC().getY()+") ");
+			arr2[m.getC().getX()][m.getC().getY()] = 'M';
 		}
-		System.out.print("]");
+		System.out.print("]\n\n");
 	}
+
+	public static String printGrid(char[][] arr2, int x, int y) {
+        String s = "\n  |";
+        	for (int i = 0; i < x; i++) {
+            		if (i <= 9)
+                		s += " " + i + " |";
+            		else
+               	 		s += "" + i + " |";
+        	}
+        	s += "\n" + "--|";
+        	for (int i = 0; i < y; i++) {
+            		s += "---+";
+        	}
+        	s += "\n";
+        	for (int i = 0; i < x; i++) {
+            		if (i <= 9)
+                		s += i + " |";
+            		else
+                		s += i + "|";
+            	for (int j = 0; j < y; j++) {
+               		s += " " + arr2[i][j] + " |";
+            	}
+            	s += "\n" + "--|";
+            	for (int k = 0; k < y; k++) {
+                	s += "---+";
+            	}
+            	s += "\n";
+        	}
+        	return s;
+
+    	}
 	
 	public static void main(String[] args) throws Exception {
 		// pass the path to the file as a parameter
-		File file = new File("ex1.txt");
+		File file = new File("input.txt");
 		Scanner sc = new Scanner(file);
 		Scanner sc2 = new Scanner(file);
 
 		//array of the grid
 		int arr[][] = null;
+		char arr2[][] = null;
 		int counter = 0, counter2 = 0, x = 0, y = 0;
 		Coordinates c = null, cs = null, ce = null;
 
@@ -87,14 +120,22 @@ public class AStarManhattan {
 		sc.close();
 
 		System.out.println("Start scan");
-
+		int x1 = 0, y1 = 0;
 		while (sc2.hasNextLine()) {
 			//create array
 			if (counter2 == 0) {
 				x = sc2.nextInt();
 				y = sc2.nextInt();
+				x1 = x;
+                		y1 = y;
 				c = new Coordinates(x, y);
 				arr = new int[x][y];
+				arr2 = new char[x][y];
+                		for (int i = 0; i < x; i++) {
+                    			for (int j = 0; j < y; j++) {
+                       				arr2[i][j] = ' ';
+                    			}
+                		}
 				System.out.println("X is: " + c.getX());
 				System.out.println("Y is: " + c.getY());
 			} //initialize the robot's starting coordinates 
@@ -104,18 +145,24 @@ public class AStarManhattan {
 				cs = new Coordinates(x, y);
 				System.out.println("X start is: " + cs.getX());
 				System.out.println("Y start is: " + cs.getY());
-			} //initialize the robot's ending coordinates, the final destination
+				arr2[x][y] = 'R';
+				} //initialize the robot's ending coordinates, the final destination
 				else if (counter2 == (counter - 1)) {
 				x = sc2.nextInt();
 				y = sc2.nextInt();
 				ce = new Coordinates(x, y);
 				System.out.println("X end is: " + ce.getX());
 				System.out.println("Y end is: " + ce.getY());
+				arr2[x][y] = 'D';
+                		System.out.println(printGrid(arr2, x1, y1));
 			} //determine which cells have bombs
 				else if (counter2 < counter) {
 				String s = sc2.next();
 				for (int i = 0; i < c.getY(); i++) {
 					arr[counter2 - 1][i] = s.charAt(i) - '0';
+					if (s.charAt(i) == '1') {
+                        		arr2[counter2 - 1][i] = 'B';
+                    			}
 					System.out.print(arr[counter2 - 1][i]);
 				}
 				System.out.println("");
@@ -147,7 +194,8 @@ public class AStarManhattan {
 			//if I go to the ending node
 			if(temp.getC().getX()==ce.getX() && temp.getC().getY()==ce.getY()) {
 				b=true;
-				printList(temp);
+				printList(temp,arr2);
+				System.out.println(printGrid(arr2, x1, y1));
 			}
 			//if there is a safe position to the left without a bomb
 			if(temp.getC().getX()-1>=0 && arr[temp.getC().getX()-1][temp.getC().getY()]==0) {
