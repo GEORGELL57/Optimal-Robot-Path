@@ -185,6 +185,9 @@ public class AStarEuclidian {
 					}
 				}
 			}
+	    if(la.isEmpty()) {
+		    System.out.println("There isn't any path");
+	    }
 	    System.out.println("\nSteps: "+(ld.size()+la.size()));
             long endTime   = System.currentTimeMillis();
             float sec = (endTime - startTime) / 1000F; System.out.println(sec + " seconds");
